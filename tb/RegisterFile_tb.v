@@ -8,8 +8,16 @@ module RegisterFile_tb;
     wire [31:0] RD1;
     wire [31:0] RD2;
 
+    reg clk;
 
-    RegisterFile dut (.R1(R1),
+    initial begin
+        clk = 0;
+    end
+
+    always #5 clk = ~clk;
+
+    RegisterFile dut (.clk(clk),
+                    .R1(R1),
                     .R2(R2),
                     .WR(WR),
                     .WD(WD),
@@ -23,7 +31,7 @@ module RegisterFile_tb;
         R2 = 6'h01;
         WR = 6'h00;
         WD = 6'h00;
-        RegWrite = 0; //works
+        RegWrite = 0;
         #10;
 
         //test case 2
@@ -31,7 +39,7 @@ module RegisterFile_tb;
         R2 = 6'h01;
         WR = 6'h00;
         WD = 6'h19;
-        RegWrite = 1; //works
+        RegWrite = 1; 
         #10;
 
 
@@ -40,7 +48,7 @@ module RegisterFile_tb;
         R2 = 6'h01;
         WR = 6'h01;
         WD = 6'h24;
-        RegWrite = 1; //works
+        RegWrite = 1; 
         #10;
 
 
@@ -49,7 +57,7 @@ module RegisterFile_tb;
         R2 = 6'h01;
         WR = 6'h00;
         WD = 6'h00;
-        RegWrite = 0; //works
+        RegWrite = 0;
         #10;
 
 
