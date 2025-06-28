@@ -4,10 +4,10 @@ module InstructionMemory (input [5:0] ReadAddress,
 
     always @ (*) begin
         case (ReadAddress)
-                6'h00: Instruction = 32'h01093822;
-                6'h01: Instruction = 32'h00000000;
-                6'h02: Instruction = 32'h00000000;
-                6'h03: Instruction = 32'h00000000;
+                6'h00: Instruction = 32'h012A4020; // add 8, 9, 10
+                6'h01: Instruction = 32'h02538822; // sub 17, 18, 19
+                6'h02: Instruction = 32'h00A62024; // and 4, 5, 6
+                6'h03: Instruction = 32'h019D5825; // or 11, 12, 13
                 6'h04: Instruction = 32'h00000000;
                 6'h05: Instruction = 32'h00000000;
                 6'h06: Instruction = 32'h00000000;

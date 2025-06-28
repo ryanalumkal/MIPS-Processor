@@ -5,12 +5,16 @@ module top;
     parameter PCsize = 6;
 
     reg clk;
-    reg [PCsize-1: 0] PC; //needs to be fixed, add clock and make a PC module
+    reg rst;
 
     initial begin
         clk = 0;
-        PC = 0;
+        rst = 0;
     end
+
+    wire [PCsize-1: 0] PC;
+    wire [PCsize-1: 0] PC_next;
+    wire [5:0] increment = 6'd1;
 
     always #5 clk = ~clk;
 
@@ -28,6 +32,15 @@ module top;
 
     assign WD = result;
 
+    PC PC1 (.clk(clk),
+            .rst(rst),
+            .PC_next(PC_next),
+            .PC(PC));
+
+    Adder Adder1 (.clk(clk),
+                .DataIn1(PC),
+                .DataIn2(increment),
+                .DataOut(PC_next));
 
     Control Control1 (.OpCode(Instruction[31:26]),
                     .Func(Instruction[5:0]),
