@@ -50,7 +50,8 @@ module top;
     InstructionMemory InstructionMemory1 (.ReadAddress(PC),
                                         .Instruction(Instruction));
 
-    RegisterFile RegisterFile1 (.R1(Instruction[25:21]),
+    RegisterFile RegisterFile1 (.clk(clk),
+                                .R1(Instruction[25:21]),
                                 .R2(Instruction[20:16]),
                                 .WR(Instruction[15:11]),
                                 .WD(WD),

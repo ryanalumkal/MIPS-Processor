@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module RegisterFile ( input clk,
                     input [4:0] R1,
                     input [4:0] R2,
@@ -11,7 +12,7 @@ module RegisterFile ( input clk,
 
     integer i;
     initial begin 
-        for (i = 0; i < 64; i = i +1) begin
+        for (i = 0; i < 32; i = i +1) begin
             REG[i] = i;
         end
 
@@ -22,8 +23,8 @@ module RegisterFile ( input clk,
         RD2 = REG[R2];
     end
 
-    always @(posedge clk) begin
-        if (RegWrite) begin
+    always @ (posedge clk) begin
+         if (RegWrite) begin
             REG[WR] <= WD;
         end
     end

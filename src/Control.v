@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module Control(input [5:0] OpCode,
                 input[5:0] Func,
                 output reg [2:0] ALUOp,

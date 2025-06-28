@@ -1,5 +1,4 @@
-// For PC
-//works
+`timescale 1ns/1ps
 module Adder (input clk,
                 input [5:0] DataIn1,
                 input [5:0] DataIn2,

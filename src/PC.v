@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 module PC (input clk,
             input rst,
             input [5:0] PC_next,
