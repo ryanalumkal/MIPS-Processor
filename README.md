@@ -1,3 +1,1 @@
-Based on this lecture from the University of Washington for the cse378 course: [A single-cycle MIPS processor](https://courses.cs.washington.edu/courses/cse378/09wi/lectures/lec07.pdf)
-
-Currently verifying I-type instructions.
+Based on Professor Andreas Moshovos's lecture on [Implementing a Processor: Multi-cycle Implementation](https://www.eecg.toronto.edu/~moshovos/ECE243-2025/l20-multicycle.html) for the [Computer Organization (ECE243)](https://engineering.calendar.utoronto.ca/course/ece243h1) course at the [University of Toronto](https://www.ece.utoronto.ca/)
