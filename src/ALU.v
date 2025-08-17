@@ -1,24 +1,21 @@
-`timescale 1ns/1ps
-module ALU (input [31:0] A,
-				input [31:0] B,
-				input [2:0] ALUOp,
-				output reg overflow,
-				output reg zero, 
-				output reg [31:0] result);
-		
-		always @(*) begin
-			case (ALUOp)
-				3'b000 : result = A & B; //works
-				3'b001 : result = A | B; //works
-				3'b010 : result = A + B; //works
-				3'b110 : result = A - B; //works
-				3'b111 : result = (A < B) ? 1 : 0; //works
-			endcase
-			
-			zero = (result == 0);
-			
-		end
-		
-	// check for overflow
+module alu #(parameter WIDTH=8)
+            (input [WIDTH-1:0] a,
+            input [WIDTH-1:0] b,
+            input [2:0] alucont,
+            output reg [WIDTH-1:0] result);
 
+    wire [WIDTH-1:0] b2, sum, slt;
+
+    assign b2 = alucont[2] ? ~b : b; // If ALU control bit 2 is set, use two's complement of b
+    assign sum = a + b2; // Perform addition or subtraction based on ALU control
+    assign slt = sum[WIDTH-1]; // Set SLT to the MSB of the sum
+
+    always @(*) begin
+        case (alucont)
+            2'b00: result <= a & b; // AND operation
+            2'b01: result <= a | b; // OR operation
+            2'b10: result <= sum; // ADD or SUB operation
+            2'b11: result <= slt; // Set Less Than operation
+        endcase
+    end
 endmodule
